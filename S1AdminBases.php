@@ -1,3 +1,32 @@
+<?php
+  $servername = "localhost";
+  $username = "root";
+  $password = "root";
+  $dbname = "proyecto_abd";
+
+  // Crear la conexión
+  $conn = new mysqli($servername, $username, $password, $dbname);
+
+  // Verificar la conexión
+  if ($conn->connect_error) {
+      die("Error de conexión: " . $conn->connect_error);
+  }
+
+  // Consulta para obtener nombres de procesos y preguntas
+  $sql = "SELECT p.NAME AS process_name, p.DETAILS AS process_details, q.QUESTION AS question
+          FROM PROCESS p, questionary q
+          WHERE p.ID = q.PROCESS";
+
+  $result = $conn->query($sql);
+  if ($result->num_rows > 0) {
+    echo "Se encontraron resultados.";
+  }else{
+    echo "No se encontraron resultados.";
+  }
+
+?>
+
+
 <!DOCTYPE html>
 <html>
 
@@ -12,6 +41,7 @@
    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
    
   <link rel="stylesheet" href="S1AdminBases.css">
+  <script type="text/javascript" src="S1AdminBases.js"></script>
 </head>
 <header>
   
@@ -73,9 +103,21 @@
 
               <table class="" style="color: darkred ">
 
+              
+              <?php
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        echo "Proceso: " . $row["process_name"] .  " - " .$row["process_details"] . " - Pregunta: " . $row["question"] . "<br>";
+                    }
+                  }
+
+                // Cerrar la conexión
+                $conn->close();
+                ?>
+
+
                 <tr>
                   <th>Proceso</th>
-                  <th>Nombre</th>
                   <th>Detalle</th>
                   <th>Pregunta</th>
                   <th>Sí</th>
@@ -85,7 +127,6 @@
                 </tr>
                 <tr>
                   <td>P01.1</td>
-                  <td>Nombre</td>
                   <td>Detalle </td>
                   <td>¿Se establece y mantiene un Sistema de Administración de Calidad (QMS) que define políticas y métodos para prever, detectar, corregir y prevenir no conformidades?</td>
                   <td><input type="checkbox"></td>
@@ -94,7 +135,6 @@
                 </tr>
                 <tr>
                   <td>P01.2</td>
-                  <td>Nombre </td>
                   <td>Detalle </td>
                   <td></td>
                   <td><input type="checkbox"></td>
@@ -104,7 +144,6 @@
                 </tr>
                 <tr>
                   <td>P01.3</td>
-                  <td>Nombre </td>
                   <td>Detalle </td>
                   <td></td>
                   <td><input type="checkbox"></td>
@@ -114,7 +153,6 @@
                 </tr>
                 <tr>
                   <td>P01.4</td>
-                  <td>Nombre</td>
                   <td>Detalle</td>
                   <td></td>
                   <td><input type="checkbox"></td>
@@ -123,7 +161,6 @@
                 </tr>
                 <tr>
                   <td>P01.5</td>
-                  <td>Nombre</td>
                   <td>Detalle</td>
                   <td></td>
                   <td><input type="checkbox"></td>
@@ -132,7 +169,6 @@
                 </tr>
                 <tr>
                   <td>P01.6</td>
-                  <td>Nombre</td>
                   <td>Detalle</td>
                   <td></td>
                   <td><input type="checkbox"></td>
@@ -145,7 +181,6 @@
 
                 <tr>
                   <th>Proceso</th>
-                  <th>Nombre</th>
                   <th>Detalle</th>
                   <th>Sí</th>
                   <th>No</th>
@@ -154,7 +189,6 @@
                 </tr>
                 <tr>
                   <td>P02.1</td>
-                  <td>Nombre</td>
                   <td>Detalle </td>
                   <td><input type="checkbox"></td>
                   <td><input type="checkbox"></td>
@@ -162,7 +196,6 @@
                 </tr>
                 <tr>
                   <td>P02.2</td>
-                  <td>Nombre </td>
                   <td>Detalle </td>
                   <td><input type="checkbox"></td>
                   <td><input type="checkbox"></td>
@@ -171,7 +204,6 @@
                 </tr>
                 <tr>
                   <td>P02.3</td>
-                  <td>Nombre </td>
                   <td>Detalle </td>
                   <td><input type="checkbox"></td>
                   <td><input type="checkbox"></td>
@@ -180,7 +212,6 @@
                 </tr>
                 <tr>
                   <td>P02.4</td>
-                  <td>Nombre</td>
                   <td>Detalle</td>
                   <td><input type="checkbox"></td>
                   <td><input type="checkbox"></td>
@@ -188,7 +219,6 @@
                 </tr>
                 <tr>
                   <td>P02.5</td>
-                  <td>Nombre</td>
                   <td>Detalle</td>
                   <td><input type="checkbox"></td>
                   <td><input type="checkbox"></td>
@@ -196,9 +226,7 @@
                 </tr>
                 <tr>
                   <td>P02.6</td>
-                  <td>Nombre</td>
                   <td>Detalle</td>
-
                   <td><input type="checkbox"></td>
                   <td><input type="checkbox"></td>
                   <td><input type="checkbox"></td>
@@ -210,7 +238,6 @@
 
                 <tr>
                   <th>Proceso</th>
-                  <th>Nombre</th>
                   <th>Detalle</th>
                   <th>Sí</th>
                   <th>No</th>
@@ -219,7 +246,6 @@
                 </tr>
                 <tr>
                   <td>P03.1</td>
-                  <td>Nombre</td>
                   <td>Detalle </td>
                   <td><input type="checkbox"></td>
                   <td><input type="checkbox"></td>
@@ -227,7 +253,6 @@
                 </tr>
                 <tr>
                   <td>P03.2</td>
-                  <td>Nombre </td>
                   <td>Detalle </td>
                   <td><input type="checkbox"></td>
                   <td><input type="checkbox"></td>
@@ -236,7 +261,6 @@
                 </tr>
                 <tr>
                   <td>P03.3</td>
-                  <td>Nombre </td>
                   <td>Detalle </td>
                   <td><input type="checkbox"></td>
                   <td><input type="checkbox"></td>
@@ -245,7 +269,6 @@
                 </tr>
                 <tr>
                   <td>P03.4</td>
-                  <td>Nombre</td>
                   <td>Detalle</td>
                   <td><input type="checkbox"></td>
                   <td><input type="checkbox"></td>
@@ -253,7 +276,6 @@
                 </tr>
                 <tr>
                   <td>P03.5</td>
-                  <td>Nombre</td>
                   <td>Detalle</td>
                   <td><input type="checkbox"></td>
                   <td><input type="checkbox"></td>
@@ -261,7 +283,6 @@
                 </tr>
                 <tr>
                   <td>P03.6</td>
-                  <td>Nombre</td>
                   <td>Detalle</td>
                   <td><input type="checkbox"></td>
                   <td><input type="checkbox"></td>
@@ -271,13 +292,12 @@
             </div>
             <div class="d-flex justify-content-md-center">
               <button class="btn btn-outline-success" type="submit">Enviar</button>
-              <button class="btn btn-outline-danger mx-2" type="submit">Limpiar</button>
+              <button class="btn btn-outline-danger mx-2" id="limpiarBtn" type="submit">Limpiar</button>
             </div>
           </div>
         </div>
       </div>
       <div class="col">
-        Asd
       </div>
     </div>
   </body>
