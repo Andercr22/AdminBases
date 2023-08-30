@@ -122,7 +122,11 @@ function Reassign() {
                             <tr>
                                 <th>Proceso</th>
                                 <th>Detalle</th>
+                                <th>Fuente</th>
                                 <th>Pregunta</th>
+                                <th>I</th>
+                                <th>D</th>
+                                <th>C</th>
                                 <th>Sí</th>
                                 <th>No</th>
                                 <th>N/A</th>
@@ -139,8 +143,11 @@ function Reassign() {
                       <tr>
                           <td>{$row["process_name"]}</td>
                           <td>{$row["process_details"]}</td>
+                          <td></td>
                           <td>{$row["question"]}</td>
-                          
+                          <td><option value="opcion0">0</option></td>
+                          <td><option value="opcion0">0</option></td>
+                          <td><option value="opcion0">0</option></td>
                           <td><input value = "si" name = "{$id}" type="Radio"></td>
                           <td><input value = "no" name = "{$id}" type="Radio"></td>
                           <td><input value = "na" name = "{$id}" type="Radio"></td>
