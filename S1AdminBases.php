@@ -44,7 +44,7 @@
     <script type="text/javascript" src="S1AdminBases.js"></script>
 </head>
 <header>
-
+    <?php include('header.php'); ?>
 </header>
 <script>
 function Reassign() {
@@ -64,50 +64,7 @@ function Reassign() {
 </script>
 
 <body>
-    <!-- A vertical navbar -->
-    <div class="navbar-container">
-        <nav class="navbar navbar-expand-md navbar-light bg-light">
-            <div class="container-fluid">
-                <a class="navbar-brand " style="color: darkred " href="#">UNA</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" style="color: darkred ;" href="#">Inicio</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" style="color: darkred ;" href="#">Cuestionario</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                style="color: darkred ;" data-bs-toggle="dropdown" aria-expanded="false">
-                                Dropdown
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-                        </li>
-                    </ul>
-                    <form class="d-flex">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-info" type="submit">Search</button>
-                    </form>
-                </div>
-            </div>
-        </nav>
-    </div>
+
     <h1 class="bg-light" style="color: darkred ;">Cuestionario de control interno del proceso de administracion de BD.
     </h1>
     <h2 style="color: gray ;">1.Planificacion, Calidad, Riegos</h2>
@@ -172,9 +129,29 @@ function Reassign() {
         <div class="col-md-4">
             <div class=right-container>
                 <img id="defaultImage" src="FeRojo.jpg" alt="Imagen por defecto">
+
+            </div>
+            <div class=right-container>
+                <!--<canvas id="myCanvas" style="background: white; text-align: center;"></canvas>
+            <legend for="myCanvas"></legend>
+            -->
+                <div class=right-container>
+                    <img id="defaultImage1" src="FeRojo.jpg" alt="Imagen por defecto">
+
+                </div>
+                <div class=right-container>
+                    <img id="defaultImage2" src="FeRojo.jpg" alt="Imagen por defecto">
+
+                </div>
+                <div class=right-container>
+                    <img id="defaultImage3" src="FeRojo.jpg" alt="Imagen por defecto">
+
+                </div>
             </div>
         </div>
+
     </div>
+
 </body>
 <footer>
 
