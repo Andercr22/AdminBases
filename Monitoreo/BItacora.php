@@ -12,7 +12,14 @@
     <?php include('../Header.php'); ?>
 </header>
 <body>
+<h1 style="color: darkred ">Monitoreo y Análisis de las Principales Estructuras de Memoria del Sistema Administrador de Bases de
+            Datos </h1>
+    <div style="text-align: center;">
+    <h3 style="color: gray">Bitacora y Análisis<h4>
+</div>
+
     <div class="container">
+    <button type="button" class="btn btn-danger">PDF</button>
         <div class="scrollable-table-container">
             <table class="" style="color: darkred ">
                 <tr>
@@ -32,6 +39,7 @@
                 </tr>
             </table>
         </div>
+        
     </div>
 
 </body>

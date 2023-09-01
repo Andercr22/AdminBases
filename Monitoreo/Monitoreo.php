@@ -25,15 +25,15 @@
 
 
 
-
+<h1 style="color: darkred ">Monitoreo y Análisis de las Principales Estructuras de Memoria del Sistema Administrador de Bases de
+            Datos </h1>
     <div class="container">
-        <a href="../Monitoreo/realtimeMonitoreo" class="btn btn-primary" role="button">REAL TIME MONITOREO</a>
-        <h2>Monitoreo y Análisis de las Principales Estructuras de Memoria del Sistema Administrador de Bases de
-            Datos </h2>
+       
+        
 
-        <div class="row">
+        <div class="row justify-content-center" style="padding:100px">
             <div class="col">
-                <h3>ESTADO DEL BUFFER DEL CACHE</h3>
+                <h4 style="color:   gray">ESTADO DEL BUFFER DEL CACHE</h4>
                 <div class="scrollable-table-container">
                     <table class="" style="color: darkred ">
                         <tr>
@@ -53,7 +53,7 @@
 
             </div>
             <div class="col">
-                <h3>GRAFICA DEL ESTADO DEL BUFER DE CACHE</h3>
+                <h4 style="color:   gray">GRAFICA DEL ESTADO DEL BUFER DE CACHE</h4>
                 <div style="color: darkred " class="sub_board">
                     <div class="sep_board"></div>
                     <div class="cont_board">
@@ -100,7 +100,9 @@
 
 
         </div>
-
+        <div style="text-align: center;">
+        <a href="../Monitoreo/realtimeMonitoreo" class="btn btn-outline-info" role="button">REAL TIME MONITOREO</a>
+</div>
     </div>
 
     
