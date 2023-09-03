@@ -29,14 +29,14 @@ body {
 .right-container {
   flex: 1;
   background-color: white;
-  padding: 20px;
+  padding: 0.1px;
   overflow-y: auto;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-#defaultImage {
+.defaultImage {
   max-width: 50%;
   max-height: 50%;
 }
