@@ -1,4 +1,6 @@
+
 <?php
+// Connexion a MYSQL
   $servername = "localhost";
   $username = "root";
   $password = "root";
@@ -13,7 +15,7 @@
   }
 
   // Consulta para obtener nombres de procesos y preguntas
-  $sql = "SELECT p.NAME AS process_name, p.DETAILS AS process_details, q.QUESTION AS question
+  $sql = "SELECT p.NAME AS process_name, p.DETAILS AS process_details, q.QUESTION AS question, q.INTEGRITY as integrity, q.AVAILABILITY as available, q.CONFIDENTIALITY as confidentiality, q.SOURCE as source
           FROM PROCESS p, questionary q
           WHERE p.ID = q.PROCESS";
 
@@ -23,8 +25,54 @@
   }else{
     echo "No se encontraron resultados.";
   }
+?>
+
+
+<?php
+// Establecer la conexión a Oracle
+$oracle_conn = oci_connect("system", "CONTRASEÑA", "localhost/XE");
+
+if (!$oracle_conn) {
+    $error = oci_error();
+    die("Error en la conexión a Oracle: " . $error['message']);
+}
+
+// Declarar variables para capturar los resultados
+$total_cache_size = 0;
+$cache_used_mb = 0;
+$free_cache_mem = 0;
+
+// Preparar la llamada al procedimiento almacenado
+$plsql = "BEGIN sys.P001(:total_cache_size, :cache_used_mb, :free_cache_mem); END;";
+$stmt = oci_parse($oracle_conn, $plsql);
+
+// Asignar valores a los parámetros
+oci_bind_by_name($stmt, ":total_cache_size", $total_cache_size, 32);
+oci_bind_by_name($stmt, ":cache_used_mb", $cache_used_mb, 32);
+oci_bind_by_name($stmt, ":free_cache_mem", $free_cache_mem, 32);
+
+// Ejecutar el procedimiento almacenado
+if (oci_execute($stmt)) {
+    // Mostrar los resultados
+    echo "Tamaño total de la caché: " . $total_cache_size . "<br>";
+    echo "Memoria caché utilizada: " . $cache_used_mb . "<br>";
+    echo "Memoria caché libre: " . $free_cache_mem . "<br>";
+} else {
+    $error = oci_error($stmt);
+    die("Error al ejecutar el procedimiento almacenado: " . $error['message']);
+}
+
+// Liberar recursos
+oci_free_statement($stmt);
+
+// Cerrar la conexión a Oracle
+oci_close($oracle_conn);
+
 
 ?>
+
+
+
 
 
 <!DOCTYPE html>
@@ -100,11 +148,11 @@ function Reassign() {
                       <tr>
                           <td>{$row["process_name"]}</td>
                           <td>{$row["process_details"]}</td>
-                          <td></td>
+                          <td>{$row["source"]}</td>
                           <td>{$row["question"]}</td>
-                          <td><option value="opcion0">0</option></td>
-                          <td><option value="opcion0">0</option></td>
-                          <td><option value="opcion0">0</option></td>
+                          <td><option value="integrity">{$row["integrity"]}</option></td>
+                          <td><option value="available">{$row["available"]}</option></td>
+                          <td><option value="confidentiality">{$row["confidentiality"]}</option></td>
                           <td><input value = "si" name = "{$id}" type="Radio"></td>
                           <td><input value = "no" name = "{$id}" type="Radio"></td>
                           <td><input value = "na" name = "{$id}" type="Radio"></td>
