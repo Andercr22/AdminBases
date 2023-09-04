@@ -1,25 +1,19 @@
 CREATE OR REPLACE PROCEDURE P001(
-    OUT v_total_cache_size NUMBER,
-    OUT v_cache_used_MB NUMBER,
-    OUT v_free_cache_MEM NUMBER
-)
-IS
-BEGIN
+        OUT_TOTAL_CACHE_SIZE OUT NUMBER,
+        OUT_CACHE_USED_MB OUT NUMBER,
+        OUT_FREE_CACHE_MEM OUT NUMBER
+  )
+    IS
+    BEGIN
+  -- Obtener el tamaño total de la cache
+        SELECT BYTES/1024/1024 INTO OUT_TOTAL_CACHE_SIZE
+      FROM v$sgainfo
+      WHERE NAME LIKE '%Buffer Cache Size%';
 
-    -- Obtener el tamaño total de la cache
-    SELECT BYTES/1024/1024 INTO v_total_cache_size
-    FROM v$sgainfo
-    WHERE NAME LIKE '%Buffer Cache Size%';
+      -- Obtener la memoria Cache utilizada
+      SELECT ROUND((SELECT COUNT(*) FROM v$bh) * (SELECT block_size FROM v$buffer_pool)/1024/1024) INTO OUT_CACHE_USED_MB
+      FROM dual;
 
-    -- Obtener la memoria Cache utilizada
-    SELECT ROUND((SELECT COUNT(*) FROM v$bh) * (SELECT block_size FROM v$buffer_pool)/1024/1024) INTO v_cache_used_MB
-    FROM dual;
-
-    v_free_cache_MEM := v_total_cache_size - v_cache_used_MB;
-
-EXCEPTION
-    WHEN OTHERS THEN
-        DBMS_OUTPUT.PUT_LINE('Error: ' || SQLERRM);
-
-END;
-/
+      OUT_FREE_CACHE_MEM := OUT_TOTAL_CACHE_SIZE - OUT_CACHE_USED_MB;
+  END;
+  /
