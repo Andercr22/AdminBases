@@ -1,6 +1,7 @@
 <!-- A vertical navbar -->
+<script type="text/javascript" src="Header.js"></script>
 <div class="navbar-container">
-		<script type="text/javascript" src="Header.js"></script>
+		
         <nav class="navbar navbar-expand-md navbar-light bg-light">
             <div class="container-fluid">
                 <a class="navbar-brand " style="color: darkred " href="#">UNA</a>
@@ -11,13 +12,59 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					<?php 
+							$ruta_actual = $_SERVER['REQUEST_URI'];
+
+								// Remove the query string from the current URL
+								$ruta_actual_sin_query = strtok($ruta_actual, '?');
+
+								// Define the target URL without the domain and protocol
+								$target_url = "/AdminBases/S1AdminBases.php";
+
+								if ($ruta_actual_sin_query == $target_url) {
+
+						?>
+						<li
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" style="color: darkred ;" href="#">Inicio</a>
+                        </li>
+						<?php
+							}
+							else{
+						?>
+						<li
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" style="color: darkred ;" href="../S1AdminBases.php">Inicio</a>
                         </li>
+						<?php
+							}
+						?>
+						<?php 
+						
+							$ruta_actual = $_SERVER['REQUEST_URI'];
+
+								// Remove the query string from the current URL
+								$ruta_actual_sin_query = strtok($ruta_actual, '?');
+
+								// Define the target URL without the domain and protocol
+								$target_url = "/AdminBases/Monitoreo/Monitoreo.php";
+
+								if ($ruta_actual_sin_query == $target_url) {
+
+						?>
+						<li class="nav-item">
+                            <a class="nav-link" style="color: darkred ;" href="#" id="monitoreoLink">Monitoreo</a>
+                        </li>
+						<?php
+							}
+							else{
+						?>
                         <li class="nav-item">
                             <a class="nav-link" style="color: darkred ;" href="Monitoreo/Monitoreo.php" id="monitoreoLink">Monitoreo</a>
                         </li>
-                      
+                      <?php
+							}
+						?>
                         <!--<li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                                 style="color: darkred ;" data-bs-toggle="dropdown" aria-expanded="false">
@@ -45,3 +92,4 @@
             </div>
         </nav>
     </div>
+	

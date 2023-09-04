@@ -25,6 +25,14 @@ body {
 
 }
 
+.content-container3 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+  /* Altura para centrar la tabla más abajo */
+}
 
 .right-container {
   flex: 1;

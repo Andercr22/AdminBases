@@ -7,26 +7,151 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+
 document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("calculateColorBtn").addEventListener("click", function () {
-        let columnNumber = 8; // Número de la columna a calcular
+		let integrityColumnNumber = 5;
+		let availabilityColumnNumber = 6;
+        let confidencialityColumnNumber = 7;
+		let columnNumber = 8; // Número de la columna a calcular
+		let noColumnNumber = 9; // Número de la columna a calcular
+		let naColumnNumber = 10; // Número de la columna a calcular
         let rows = document.querySelectorAll('table tr:not(:first-child)'); // Obtener todas las filas excepto la primera
-
+		
+		//Variables semáforo grande
         let totalRadioButtons = 0;
-        let checkedRadioButtons = 0;
-
+        let yesCheckedRadioButtons = 0;
+		let naCheckedRadioButtons = 0;
+		
+		//Variables semáforo confidenciality
+		let confTotalRadioButtons = 0;
+        let confYesCheckedRadioButtons = 0;
+		let confNaCheckedRadioButtons = 0;
+		
+		//Variables semáforo availability
+		let avTotalRadioButtons = 0;
+        let avYesCheckedRadioButtons = 0;
+		let avNaCheckedRadioButtons = 0;
+		
+		//Variables semáforo integrity
+		let intTotalRadioButtons = 0;
+        let intYesCheckedRadioButtons = 0;
+		let intNaCheckedRadioButtons = 0;
+		
         rows.forEach(function (row) {
-            let radioButtons = row.querySelectorAll(`td:nth-child(${columnNumber}) input[type="radio"]`);
+			//SEMÁFORO GRANDE
+            let yesRadioButtons = row.querySelectorAll(`td:nth-child(${columnNumber}) input[type="radio"]`);
 
-            let selectedRadioButton = Array.from(radioButtons).find(radioButton => radioButton.checked);
+            let selectedRadioButton = Array.from(yesRadioButtons).find(radioButton => radioButton.checked);
             if (selectedRadioButton && selectedRadioButton.value === 'si') {
-                checkedRadioButtons++;
+                yesCheckedRadioButtons++;
+				totalRadioButtons ++; // Mover esta línea aquí
             }
+			
+			let naRadioButtons = row.querySelectorAll(`td:nth-child(${naColumnNumber}) input[type="radio"]`);
+			let naSelectedRadioButton = Array.from(naRadioButtons).find(radioButton => radioButton.checked);	
+            if (naSelectedRadioButton && naSelectedRadioButton.value === 'na') {
+                naCheckedRadioButtons++;
+				totalRadioButtons ++; // Mover esta línea aquí
+            }
+			
+			let noRadioButtons = row.querySelectorAll(`td:nth-child(${noColumnNumber}) input[type="radio"]`);
+			let noSelectedRadioButton = Array.from(noRadioButtons).find(radioButton => radioButton.checked);	
+            if (noSelectedRadioButton && noSelectedRadioButton.value === 'no') {
+				totalRadioButtons ++; // Mover esta línea aquí
+            }
+			
+			
+			//SEMÁFORO CONFIDENCIALITY
+			
+			 let confSelect= row.querySelector(`td:nth-child(${confidencialityColumnNumber}) `);
 
-            totalRadioButtons += radioButtons.length; // Mover esta línea aquí
+			if (confSelect) { // Asegúrate de que haya un elemento <select> en la celda
+				let confValue = confSelect.textContent;        
+				if (confValue !== '0') {
+				let confYesRadioButtons = row.querySelectorAll(`td:nth-child(${columnNumber}) input[type="radio"]`);
+
+				let confSelectedRadioButton = Array.from(confYesRadioButtons).find(radioButton => radioButton.checked);
+				if (confSelectedRadioButton && confSelectedRadioButton.value === 'si') {
+					confYesCheckedRadioButtons++;
+					confTotalRadioButtons ++; // Mover esta línea aquí
+				}
+				
+				let confNaRadioButtons = row.querySelectorAll(`td:nth-child(${naColumnNumber}) input[type="radio"]`);
+				let confNaSelectedRadioButton = Array.from(confNaRadioButtons).find(radioButton => radioButton.checked);	
+				if (confNaSelectedRadioButton && confNaSelectedRadioButton.value === 'na') {
+					confNaCheckedRadioButtons++;
+					confTotalRadioButtons ++; // Mover esta línea aquí
+				}
+				
+				let confNoRadioButtons = row.querySelectorAll(`td:nth-child(${noColumnNumber}) input[type="radio"]`);
+				let confNoSelectedRadioButton = Array.from(confNoRadioButtons).find(radioButton => radioButton.checked);	
+				if (confNoSelectedRadioButton && confNoSelectedRadioButton.value === 'no') {
+					confTotalRadioButtons ++; // Mover esta línea aquí
+				}
+			}}
+			
+			//SEMÁFORO INTEGRITY
+			
+			 let intSelect= row.querySelector(`td:nth-child(${integrityColumnNumber}) `);
+
+			if (intSelect) { // Asegúrate de que haya un elemento <select> en la celda
+				let intValue = intSelect.textContent;        
+				if (intValue !== '0') {
+				let intYesRadioButtons = row.querySelectorAll(`td:nth-child(${columnNumber}) input[type="radio"]`);
+
+				let intSelectedRadioButton = Array.from(intYesRadioButtons).find(radioButton => radioButton.checked);
+				if (intSelectedRadioButton && intSelectedRadioButton.value === 'si') {
+					intYesCheckedRadioButtons++;
+					intTotalRadioButtons ++; // Mover esta línea aquí
+				}
+				
+				let intNaRadioButtons = row.querySelectorAll(`td:nth-child(${naColumnNumber}) input[type="radio"]`);
+				let intNaSelectedRadioButton = Array.from(intNaRadioButtons).find(radioButton => radioButton.checked);	
+				if (intNaSelectedRadioButton && intNaSelectedRadioButton.value === 'na') {
+					intNaCheckedRadioButtons++;
+					intTotalRadioButtons ++; // Mover esta línea aquí
+				}
+				
+				let intNoRadioButtons = row.querySelectorAll(`td:nth-child(${noColumnNumber}) input[type="radio"]`);
+				let intNoSelectedRadioButton = Array.from(intNoRadioButtons).find(radioButton => radioButton.checked);	
+				if (intNoSelectedRadioButton && intNoSelectedRadioButton.value === 'no') {
+					intTotalRadioButtons ++; // Mover esta línea aquí
+				}
+			}}
+			
+			//SEMÁFORO AVAILABILITY
+			
+			 let avSelect= row.querySelector(`td:nth-child(${availabilityColumnNumber}) `);
+
+			if (avSelect) { // Asegúrate de que haya un elemento <select> en la celda
+				let avValue = avSelect.textContent;        
+				if (avValue !== '0') {
+				let avYesRadioButtons = row.querySelectorAll(`td:nth-child(${columnNumber}) input[type="radio"]`);
+
+				let avSelectedRadioButton = Array.from(avYesRadioButtons).find(radioButton => radioButton.checked);
+				if (avSelectedRadioButton && avSelectedRadioButton.value === 'si') {
+					avYesCheckedRadioButtons++;
+					avTotalRadioButtons ++; // Mover esta línea aquí
+				}
+				
+				let avNaRadioButtons = row.querySelectorAll(`td:nth-child(${naColumnNumber}) input[type="radio"]`);
+				let avNaSelectedRadioButton = Array.from(avNaRadioButtons).find(radioButton => radioButton.checked);	
+				if (avNaSelectedRadioButton && avNaSelectedRadioButton.value === 'na') {
+					avNaCheckedRadioButtons++;
+					avTotalRadioButtons ++; // Mover esta línea aquí
+				}
+				
+				let avNoRadioButtons = row.querySelectorAll(`td:nth-child(${noColumnNumber}) input[type="radio"]`);
+				let avNoSelectedRadioButton = Array.from(avNoRadioButtons).find(radioButton => radioButton.checked);	
+				if (avNoSelectedRadioButton && avNoSelectedRadioButton.value === 'no') {
+					avTotalRadioButtons ++; // Mover esta línea aquí
+				}
+			}}
         });
 
-        let percentage = totalRadioButtons > 0 ? (checkedRadioButtons / totalRadioButtons) * 100 : 0;
+		//SEMÁFORO GRANDE
+        let percentage = totalRadioButtons > 0 ? (yesCheckedRadioButtons / (totalRadioButtons-naCheckedRadioButtons)) * 100 : 0;
         let color = 'red';
 
         if (percentage >= 60) {
@@ -39,10 +164,62 @@ document.addEventListener("DOMContentLoaded", function () {
 
         console.log("Color:", color);
 
-        setImageByColor(color);
+        setImageByColor(color,"defaultImage");
+		
+		//SEMÁFORO CONFIDENCIALITY
+		
+		let confPercentage = confTotalRadioButtons > 0 ? (confYesCheckedRadioButtons / (confTotalRadioButtons-confNaCheckedRadioButtons)) * 100 : 0;
+        let confColor = 'red';
+
+        if (confPercentage >= 60) {
+            confColor = 'green';
+        } else if (confPercentage >= 30) {
+            confColor = 'yellow';
+        } else {
+            confColor = 'red';
+        }
+
+        console.log("Color:", confColor);
+
+        setImageByColor(confColor,"defaultImage1");
+		
+		//SEMÁFORO INTEGRITY
+		
+		let intPercentage = intTotalRadioButtons > 0 ? (intYesCheckedRadioButtons / (intTotalRadioButtons-intNaCheckedRadioButtons)) * 100 : 0;
+        let intColor = 'red';
+
+        if (intPercentage >= 60) {
+            intColor = 'green';
+        } else if (intPercentage >= 30) {
+            intColor = 'yellow';
+        } else {
+            intColor = 'red';
+        }
+
+        console.log("Color:", intColor);
+
+        setImageByColor(intColor,"defaultImage3");
+		
+		//SEMÁFORO AVAILABILITY
+		
+		let avPercentage = avTotalRadioButtons > 0 ? (avYesCheckedRadioButtons / (avTotalRadioButtons-avNaCheckedRadioButtons)) * 100 : 0;
+        let avColor = 'red';
+
+        if (avPercentage >= 60) {
+            avColor = 'green';
+        } else if (avPercentage >= 30) {
+            avColor = 'yellow';
+        } else {
+            avColor = 'red';
+        }
+
+        console.log("Color:", avColor);
+
+        setImageByColor(avColor,"defaultImage2");
+		
     });
 });
-function setImageByColor(color) {
+function setImageByColor(color,imageId) {
     let imageName = "";
 
     if (color === 'green') {
@@ -53,10 +230,11 @@ function setImageByColor(color) {
         imageName = "FeRojo.jpg";
     }
 
-    let imgElement = document.getElementById("defaultImage");
+    let imgElement = document.getElementById(imageId);
     imgElement.src = imageName;
     imgElement.alt = "Imagen " + imageName;
 }
+
 
 
 //SE INICIALIZA EL CANVA
