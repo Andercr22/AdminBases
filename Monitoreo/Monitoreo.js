@@ -30,3 +30,25 @@ const ctx = document.getElementById('myChart');
       }
     }
   });
+  
+  function ajustarPorcentajes(parametro1, parametro2, parametro3) {
+  // Asegurémonos de que los parámetros estén en el rango de 0 a 1000
+  parametro1 = Math.min(1000, Math.max(0, parametro1));
+  parametro2 = Math.min(1000, Math.max(0, parametro2));
+  parametro3 = Math.min(1000, Math.max(0, parametro3));
+
+ 
+
+  // Calculamos los porcentajes para cada clase
+  const total = 1000;
+  const porcentaje1 = (parametro1 / total) * 100;
+  const porcentaje2 = (parametro2 / total) * 100;
+  const porcentaje3 = (parametro3 / total) * 100;
+
+ 
+
+  // Aplicamos los porcentajes a las clases
+  document.querySelector('.b1').style.height = porcentaje1 + '%';
+  document.querySelector('.b2').style.height = porcentaje2 + '%';
+  document.querySelector('.b3').style.height = porcentaje3 + '%';
+}

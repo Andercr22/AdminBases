@@ -86,21 +86,21 @@ oci_execute($stmt)
                     <div class="cont_board">
                         <div class="graf_board">
                             <div class="barra">
-                                <div class="sub_barra b5">
+                                <div class="sub_barra b1">
                                     <div class="tag_g"><?php echo $total_cache_size ?></div>
                                     <div class="tag_leyenda">SIZE</div>
                                 </div>
                             </div>
 
                             <div class="barra">
-                                <div class="sub_barra b3">
+                                <div class="sub_barra b2">
                                     <div class="tag_g"><?php echo $cache_used_mb ?></div>
                                     <div class="tag_leyenda">USED</div>
                                 </div>
                             </div>
 
                             <div class="barra">
-                                <div class="sub_barra b5">
+                                <div class="sub_barra b3">
                                     <div class="tag_g"><?php echo $free_cache_mem ?></div>
                                     <div class="tag_leyenda">FREE</div>
                                 </div>
@@ -141,6 +141,10 @@ oci_close($oracle_conn);
 
 
 ?>
+
+<script>
+ajustarPorcentajes(<?php echo $total_cache_size; ?>, <?php echo $cache_used_mb; ?>, <?php echo $free_cache_mem; ?>);
+</script>
 </body>
 
 </html>

@@ -1,5 +1,6 @@
 <!-- A vertical navbar -->
 <div class="navbar-container">
+		<script type="text/javascript" src="Header.js"></script>
         <nav class="navbar navbar-expand-md navbar-light bg-light">
             <div class="container-fluid">
                 <a class="navbar-brand " style="color: darkred " href="#">UNA</a>
@@ -14,7 +15,7 @@
                             <a class="nav-link active" aria-current="page" style="color: darkred ;" href="../S1AdminBases.php">Inicio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" style="color: darkred ;" href="Monitoreo/Monitoreo.php">Monitoreo</a>
+                            <a class="nav-link" style="color: darkred ;" href="Monitoreo/Monitoreo.php" id="monitoreoLink">Monitoreo</a>
                         </li>
                       
                         <!--<li class="nav-item dropdown">
