@@ -9,9 +9,9 @@
 
     <link rel="stylesheet" href="../S1AdminBases.css">
     <link rel="stylesheet" href="../Grafica.css">
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/2.2.1/chartjs-plugin-annotation.min.js" integrity="sha512-qF3T5CaMgSRNrxzu69V3ZrYGnrbRMIqrkE+OrE01DDsYDNo8R1VrtYL8pk+fqhKxUBXQ2z+yV/irk+AbbHtBAg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <title>RealTimeMonitoreo</title>
 
 </head>
@@ -23,6 +23,7 @@
     max-width: 650px;
     margin: 35px auto;
 }
+
 #real-time-chart {
     width: 400px;
     height: 200px;
@@ -107,12 +108,13 @@ window.Promise ||
     <h1 style="color: darkred ">Monitoreo y Análisis de las Principales Estructuras de Memoria del Sistema Administrador
         de Bases de
         Datos </h1>
-    <div class="container">
-
-        <div class="scrollable-table-container">
+       
+    <div class="container"><div class="text-center" style="color:gray"><h4 >Monitoreo en Tiempo Real con HighWaterMark</h4>
+        </div>
+    <div class="scrollable-table-container">
             <table class="" style="color: darkred ">
                 <tr>
-                    <th></th>
+                    <th>ORACLE</th>
                     <th></th>
                     <th>STATUS</th>
                     <th>HWM</th>
@@ -128,9 +130,9 @@ window.Promise ||
                             <div class="progress-bar bar3" style="width: 20%;"></div>
                         </div>
                     </td>
-                    <td></td>
+                    <td><img src="Cg.png" width="20" height="20"></td>
                     <td>
-                        <option value="opcion0">0</option>
+                    <?php echo $total_cache_size * 0.85?> MB
                     </td>
                     <td>
                         <option value="opcion0">0</option>
@@ -140,8 +142,8 @@ window.Promise ||
         </div>
     </div>
 
-
-    <canvas id="realtime-chart" ></canvas>
+    <div class="container"><canvas id="realtime-chart"></canvas></div>
+    
 
 
 
@@ -150,58 +152,89 @@ window.Promise ||
 </body>
 
 <script>
-
 // Configuración inicial del gráfico
-        var ctx = document.getElementById('realtime-chart').getContext('2d');
-        var data = {
-            labels: [],  // Etiquetas vacías para el eje X
-            datasets: [{
-                label: 'Valor en tiempo real',
-                data: [],  // Datos vacíos para comenzar
-                borderColor: 'blue',
-                borderWidth: 1,
-                fill: false
-            }]
-        };
-
-        var config = {
-            type: 'line',
-            data: data,
-            options: {
-                scales: {
-                    x: {
-                        type: 'linear',
-                        position: 'bottom'
-                    },
-                    y: {
-                        beginAtZero: true
+var ctx = document.getElementById('realtime-chart').getContext('2d');
+var data = {
+    labels: [], // Etiquetas vacías para el eje X
+    datasets: [{
+        label: 'Valor en tiempo real',
+        data: [], // Datos vacíos para comenzar
+        borderColor: 'blue',
+        borderWidth: 1,
+        fill: false
+    }]
+};
+var hwm = <?php echo $total_cache_size ?> * 0.85;
+var config = {
+    type: 'line',
+    data: data,
+    options: {
+        scales: {
+            x: {
+                type: 'linear',
+                position: 'bottom'
+            },
+            y: {
+                beginAtZero: true,
+                ticks: {
+                    callback: function(value, index, values) {
+                        // Agrega la etiqueta a la barra horizontal roja
+                        if (value === hwm) {
+                            return 'Límite de advertencia';
+                        } else {
+                            return value;
+                        }
                     }
-                },
-                animation: false
+                }
             }
-        };
+        },
+        animation: false,
+        plugins: {
+            annotation: {
+                annotations: [
+                    {
+                        type: 'line',
+                        mode: 'horizontal',
+                        scaleID: 'y',
+                        borderColor: 'red', // Color de la línea de advertencia
+                        borderWidth: 2, // Ancho de la línea de advertencia
+                        value: hwm, // El valor en el eje Y donde se coloca la línea de advertencia
+                        label: {
+                            content: 'Límite de advertencia', // Contenido de la etiqueta
+                            enabled: true // Habilita la etiqueta
+                        }
+                    }
+                ]
+            }
+        }           
+    }
+};
 
-        var chart = new Chart(ctx, config);
+var chart = new Chart(ctx, config);
 
-        // Función para agregar un nuevo punto de datos al gráfico
-        function addData(chart, label, data) {
-            chart.data.labels.push(label);
-            chart.data.datasets[0].data.push(data);
+// Función para agregar un nuevo punto de datos al gráfico
+function addData(chart, label, data) {
+    chart.data.labels.push(label);
+    chart.data.datasets[0].data.push(data);
 
-          
+// Verificar si el valor supera el límite de advertencia
+if (data > hwm) {
+        // Muestra una alerta o realiza alguna acción de advertencia aquí
+        alert('¡El valor supera el límite de advertencia!');
+    }
 
-            chart.update();
-        }
+    chart.update();
+}
 
-        // Simula la actualización de datos en tiempo real
-        var labelCounter = 0;
-        setInterval(function () {
-            labelCounter++;
-            var randomValue = <?php echo $total_cache_size ?>;
-            addData(chart, labelCounter, randomValue);
-        }, 5000); // Actualiza cada segundo
-    </script>
+// Simula la actualización de datos en tiempo real
+var labelCounter = 0;
+setInterval(function() {
+    labelCounter++;
+    var randomValue = <?php echo $cache_used_mb ?>;
+    addData(chart, labelCounter, randomValue);
+}, 1000); // Actualiza cada segundo
 </script>
+
 <div style="text-align: center;">
     <a href="Bitacora.php" class="btn btn-outline-info" role="button">BITACORA</a>
 </div>
