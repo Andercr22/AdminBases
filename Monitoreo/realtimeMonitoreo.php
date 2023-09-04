@@ -9,7 +9,9 @@
 
     <link rel="stylesheet" href="../S1AdminBases.css">
     <link rel="stylesheet" href="../Grafica.css">
-    <script type="text/javascript" src="Monitoreo.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+
     <title>RealTimeMonitoreo</title>
 
 </head>
@@ -20,6 +22,10 @@
 #chart {
     max-width: 650px;
     margin: 35px auto;
+}
+#real-time-chart {
+    width: 400px;
+    height: 200px;
 }
 </style>
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
@@ -98,10 +104,11 @@ window.Promise ||
 </script>
 
 <body>
-<h1 style="color: darkred ">Monitoreo y Análisis de las Principales Estructuras de Memoria del Sistema Administrador de Bases de
-            Datos </h1>
+    <h1 style="color: darkred ">Monitoreo y Análisis de las Principales Estructuras de Memoria del Sistema Administrador
+        de Bases de
+        Datos </h1>
     <div class="container">
-    
+
         <div class="scrollable-table-container">
             <table class="" style="color: darkred ">
                 <tr>
@@ -132,78 +139,71 @@ window.Promise ||
             </table>
         </div>
     </div>
-    <div id="chart"></div>
 
 
-    
-
-    <script>
-    var options = {
-        series: [{
-            data: data.slice()
-
-        }],
-        chart: {
-            id: 'realtime',
-            height: 350,
-            type: 'line',
-            animations: {
-                enabled: true,
-                easing: 'linear',
-                dynamicAnimation: {
-                    speed: 1000
-                }
-            },
-            toolbar: {
-                show: false
-            },
-            zoom: {
-                enabled: false
-            }
-        },
-        dataLabels: {
-            enabled: false
-        },
-        stroke: {
-            curve: 'smooth'
-        },
-        title: {
-            text: 'BUFFER',
-            align: 'left'
-        },
-        markers: {
-            size: 0
-        },
-        xaxis: {
-            type: 'datetime',
-            range: XAXISRANGE,
-        },
-        yaxis: {
-            max: 1000
-        },
-        legend: {
-            show: false
-        },
-    };
-
-    var chart = new ApexCharts(document.querySelector("#chart"), options);
-    chart.render();
+    <canvas id="realtime-chart" ></canvas>
 
 
-    window.setInterval(function() {
-        getNewSeries(lastDate, {
-            min: 100,
-            max: 900
-        })
 
-        chart.updateSeries([{
-            data: data
-        }])
-    }, 1000)
-    </script>
-    <div style="text-align: center;">
-    <a href="Bitacora.php" class="btn btn-outline-info" role="button">BITACORA</a>
-    </div>
+
+
 </body>
+
+<script>
+
+// Configuración inicial del gráfico
+        var ctx = document.getElementById('realtime-chart').getContext('2d');
+        var data = {
+            labels: [],  // Etiquetas vacías para el eje X
+            datasets: [{
+                label: 'Valor en tiempo real',
+                data: [],  // Datos vacíos para comenzar
+                borderColor: 'blue',
+                borderWidth: 1,
+                fill: false
+            }]
+        };
+
+        var config = {
+            type: 'line',
+            data: data,
+            options: {
+                scales: {
+                    x: {
+                        type: 'linear',
+                        position: 'bottom'
+                    },
+                    y: {
+                        beginAtZero: true
+                    }
+                },
+                animation: false
+            }
+        };
+
+        var chart = new Chart(ctx, config);
+
+        // Función para agregar un nuevo punto de datos al gráfico
+        function addData(chart, label, data) {
+            chart.data.labels.push(label);
+            chart.data.datasets[0].data.push(data);
+
+          
+
+            chart.update();
+        }
+
+        // Simula la actualización de datos en tiempo real
+        var labelCounter = 0;
+        setInterval(function () {
+            labelCounter++;
+            var randomValue = <?php echo $total_cache_size ?>;
+            addData(chart, labelCounter, randomValue);
+        }, 5000); // Actualiza cada segundo
+    </script>
+</script>
+<div style="text-align: center;">
+    <a href="Bitacora.php" class="btn btn-outline-info" role="button">BITACORA</a>
+</div>
 
 </html>
