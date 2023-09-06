@@ -16,6 +16,7 @@
 
 </head>
 <header>
+<?php include('../bd.php'); ?>
     <?php include('../Header.php'); ?>
 </header>
 <style>
@@ -211,28 +212,41 @@ var config = {
 };
 
 var chart = new Chart(ctx, config);
-
+var labelCounter = 0; // Inicializa el contador en 0
 // Función para agregar un nuevo punto de datos al gráfico
-function addData(chart, label, data) {
-    chart.data.labels.push(label);
+function addData(chart, data) {
+    chart.data.labels.push(labelCounter); // Usa el contador como etiqueta en el eje X
     chart.data.datasets[0].data.push(data);
 
-// Verificar si el valor supera el límite de advertencia
-if (data > hwm) {
+    // Verificar si el valor supera el límite de advertencia
+    if (data > hwm) {
         // Muestra una alerta o realiza alguna acción de advertencia aquí
         alert('¡El valor supera el límite de advertencia!');
     }
 
     chart.update();
+    labelCounter++; // Incrementa el contador después de agregar datos
 }
 
-// Simula la actualización de datos en tiempo real
-var labelCounter = 0;
-setInterval(function() {
-    labelCounter++;
-    var randomValue = <?php echo $cache_used_mb ?>;
-    addData(chart, labelCounter, randomValue);
-}, 1000); // Actualiza cada segundo
+// Función para obtener datos en tiempo real desde el servidor
+
+function fetchData() {
+    fetch('../bd.php')
+        .then(response => response.json())
+        .then(data => {
+            var cacheUsed = data.cache_used_mb;
+            console.log(data.cache_used_mb);
+            addData(chart, cacheUsed);
+        })
+        .catch(error => {
+            console.error('Error al obtener datos en tiempo real: ' + error);
+        });
+}
+
+// Llamar a fetchData inicialmente y luego cada segundo
+fetchData(); // Llama a la función una vez para obtener datos iniciales
+
+setInterval(fetchData, 1000); // Actualiza cada segundo
 </script>
 
 <div style="text-align: center;">
