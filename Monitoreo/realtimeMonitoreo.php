@@ -240,4 +240,8 @@ setInterval(fetchData, 1000); // Actualiza cada segundo
     <a href="Bitacora.php" class="btn btn-outline-info" role="button">REPORTE</a>
 </div>
 
+<div style="text-align: center;">
+    <a href="Monitoreo.php" class="btn btn-outline-info" role="button">MONITOREO</a>
+</div>
+
 </html>

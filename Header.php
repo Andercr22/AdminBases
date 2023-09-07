@@ -50,8 +50,12 @@
 
 								// Define the target URL without the domain and protocol
 								$target_url = "/AdminBases/Monitoreo/Monitoreo.php";
+								
+								$target_url2 = "/AdminBases/Monitoreo/realtimeMonitoreo.php";
+								
+								$target_url3 = "/AdminBases/Monitoreo/Bitacora.php";
 
-								if ($ruta_actual_sin_query == $target_url) {
+								if ($ruta_actual_sin_query == $target_url || $ruta_actual_sin_query == $target_url2 || $ruta_actual_sin_query == $target_url3 ) {
 
 						?>
 						<li class="nav-item">

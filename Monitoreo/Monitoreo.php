@@ -100,8 +100,9 @@
 
         </div>
         <div style="text-align: center;">
-        <a href="../Monitoreo/realtimeMonitoreo" class="btn btn-outline-info" role="button">REAL TIME MONITOREO</a>
+        <a href="realtimeMonitoreo.php" class="btn btn-outline-info" role="button">REAL TIME MONITOREO</a>
 </div>
+
     </div>
 
   <?php  

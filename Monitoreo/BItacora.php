@@ -40,7 +40,7 @@
 $pythonScript = '../Call_P002.py'; // Reemplaza con la ruta al script de Python
 
 // Ejecutar el script de Python
-exec("C:\Users\kairo\AppData\Local\Programs\Python\Python311\python.exe $pythonScript", $output, $returnCode);
+exec("C:\Users\XSF\AppData\Local\Programs\Python\Python311\python.exe $pythonScript", $output, $returnCode);
 
 // exec("python $pythonScript", $output, $returnCode);
 
@@ -81,6 +81,8 @@ if ($returnCode === 0) {
         </div>
         
     </div>
-
+<div style="text-align: center;">
+    <a href="realtimeMonitoreo.php" class="btn btn-outline-info" role="button">REAL TIME MONITOREO</a>
+</div>
 </body>
 </html>
