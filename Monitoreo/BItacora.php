@@ -27,8 +27,8 @@
             <table class="" style="color: darkred ">
                 <tr>
                     <th>TIMESTAMP</th>
-                    <th>PROCESSID</th>
-                    <th>USED</th>
+                    <th>USERNAME</th>
+                    <th>PID</th>
                     <th>SQLTEXT</th>
                 </tr>
 
