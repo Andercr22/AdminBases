@@ -5,7 +5,7 @@ def show_cache_memory_usage():
     """Version con configuration file"""
     try:
         # create a connection to the Oracle Database
-        connection = cx_Oracle.connect("system/Hubble!0812@localhost:1521/XE")
+        connection = cx_Oracle.connect("system/root@localhost:1521/XE")
         cursor = connection.cursor()
         # Create a variable to hold the result set
         result_cursor = cursor.var(cx_Oracle.CURSOR)

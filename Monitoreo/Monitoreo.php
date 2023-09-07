@@ -14,7 +14,7 @@
     <title>Monitoreo</title>
 </head>
 <header>
-<?php include('../bd.php') ?>
+<div hidden="hidden"><?php include('../bd.php'); ?></div>
     <?php include('../Header.php') ?>
 </header>
 

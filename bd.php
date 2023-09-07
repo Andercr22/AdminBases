@@ -31,6 +31,7 @@ $data = array(
     "free_cache_mem" => $free_cache_mem
 );
 
-// Devolver los datos en formato JSON
+
 echo json_encode($data);
+
 ?>

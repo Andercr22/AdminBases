@@ -16,7 +16,7 @@
 
 </head>
 <header>
-<?php include('../bd.php'); ?>
+<div hidden="hidden"><?php include('../bd.php'); ?></div>
     <?php include('../Header.php'); ?>
 </header>
 <style>
@@ -115,29 +115,16 @@ window.Promise ||
     <div class="scrollable-table-container">
             <table class="" style="color: darkred ">
                 <tr>
-                    <th>ORACLE</th>
-                    <th></th>
                     <th>STATUS</th>
                     <th>HWM</th>
-                    <th>DIAS SATURACIÓN</th>
                 </tr>
 
                 <tr>
-                    <td>PRODUCCIÓN</td>
-                    <td>
-                        <div class="stacked-progress">
-                            <div class="progress-bar bar1" style="width: 30%;"></div>
-                            <div class="progress-bar bar2" style="width: 50%;"></div>
-                            <div class="progress-bar bar3" style="width: 20%;"></div>
-                        </div>
-                    </td>
                     <td><img src="Cg.png" width="20" height="20"></td>
                     <td>
                     <?php echo $total_cache_size * 0.85?> MB
                     </td>
-                    <td>
-                        <option value="opcion0">0</option>
-                    </td>
+
                 </tr>
             </table>
         </div>
@@ -250,7 +237,7 @@ setInterval(fetchData, 1000); // Actualiza cada segundo
 </script>
 
 <div style="text-align: center;">
-    <a href="Bitacora.php" class="btn btn-outline-info" role="button">BITACORA</a>
+    <a href="Bitacora.php" class="btn btn-outline-info" role="button">REPORTE</a>
 </div>
 
 </html>
