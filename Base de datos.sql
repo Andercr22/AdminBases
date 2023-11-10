@@ -35,7 +35,34 @@ INSERT INTO PROCESS (name, DETAILS, DOMAIN) values ("P08", "Administrar la calid
 
 INSERT INTO PROCESS (name, DETAILS, DOMAIN) values ("P09", "Evaluar y Administrar los Riesgos de TI", 1);
 
-INSERT INTO PROCESS (name, DETAILS, DOMAIN) values ("P?", "Sin Porceso asignado", 1);
+INSERT INTO PROCESS (name, DETAILS, DOMAIN) values ("P?", "Sin Proceso asignado", 1);
+
+
+
+INSERT INTO PROCESS (name, DETAILS, DOMAIN) values ("P?", "Diseño de Bases de Datoso", 1);
+
+INSERT INTO PROCESS (name, DETAILS, DOMAIN) values ("P?", "Instalación y Configuración", 1);
+
+INSERT INTO PROCESS (name, DETAILS, DOMAIN) values ("P?", "Gestión de Datos", 1);
+
+INSERT INTO PROCESS (name, DETAILS, DOMAIN) values ("P?", "Optimización de Rendimiento", 1);
+
+INSERT INTO PROCESS (name, DETAILS, DOMAIN) values ("P?", "Seguridad de Datos", 1);
+
+INSERT INTO PROCESS (name, DETAILS, DOMAIN) values ("P?", "Migración y Actualización", 1);
+
+INSERT INTO PROCESS (name, DETAILS, DOMAIN) values ("P?", "Documentación", 1);
+
+INSERT INTO PROCESS (name, DETAILS, DOMAIN) values ("P?", "Automatización y Programación", 1);
+
+INSERT INTO PROCESS (name, DETAILS, DOMAIN) values ("P?", "Soporte y Resolución de Problemas", 1);
+
+INSERT INTO PROCESS (name, DETAILS, DOMAIN) values ("P?", "Planificación y Estrategia", 1);
+
+INSERT INTO PROCESS (name, DETAILS, DOMAIN) values ("P?", "Cumplimiento Regulatorio", 1);
+
+INSERT INTO PROCESS (name, DETAILS, DOMAIN) values ("P?", "Monitorización y Alertas", 1);
+
 
 INSERT INTO QUESTIONARY (QUESTION,PROCESS, INTEGRITY, AVAILABILITY, CONFIDENTIALITY, SOURCE) values ("¿La planeación estratégica de TI se lleva a cabo para alinear y dirigir los recursos de TI con la estrategia y prioridades del negocio?", 1, 0, 0, 0,"COBIT 4.1");
 INSERT INTO QUESTIONARY (QUESTION,PROCESS, INTEGRITY, AVAILABILITY, CONFIDENTIALITY, SOURCE) values ("¿Se educa a los ejecutivos sobre las capacidades tecnológicas actuales y futuras, así como las oportunidades que la TI ofrece?", 1, 0, 0, 0,"COBIT 4.1");
@@ -71,3 +98,99 @@ INSERT INTO QUESTIONARY (QUESTION,PROCESS, INTEGRITY, AVAILABILITY, CONFIDENTIAL
 INSERT INTO QUESTIONARY (QUESTION,PROCESS, INTEGRITY, AVAILABILITY, CONFIDENTIALITY, SOURCE) values ("¿Se hace una análisis sobre la distribución estructural?", 4, 0, 1, 0, "Clase 28 Agosto: Estructuras de almacenamiento");
 INSERT INTO QUESTIONARY (QUESTION,PROCESS, INTEGRITY, AVAILABILITY, CONFIDENTIALITY, SOURCE) values ("¿Realiza correcciones a la estructura de la base de datos?", 4, 0, 1, 0, "Clase 28 Agosto: Estructuras de almacenamiento");
 INSERT INTO QUESTIONARY (QUESTION,PROCESS, INTEGRITY, AVAILABILITY, CONFIDENTIALITY, SOURCE) values ("¿Se realiza un monitoreo constante del uso de los tablespace?", 4, 0, 1, 0, "Clase 28 Agosto: Estructuras de almacenamiento");
+
+INSERT INTO QUESTIONARY (QUESTION,PROCESS, INTEGRITY, AVAILABILITY, CONFIDENTIALITY, SOURCE) values ("¿La estructura de la base de datos está documentada?", 5, 1, 2, 2, "Proyecto Final");
+INSERT INTO QUESTIONARY (QUESTION,PROCESS, INTEGRITY, AVAILABILITY, CONFIDENTIALITY, SOURCE) values ("¿Se han definido restricciones de integridad en las tablas?", 5, 1, 2, 2, "Proyecto Final");
+INSERT INTO QUESTIONARY (QUESTION,PROCESS, INTEGRITY, AVAILABILITY, CONFIDENTIALITY, SOURCE) values ("¿Existen modelos de datos, como diagramas ER, para representar la estructura de la base de datos?", 5, 1, 1, 2, "Proyecto Final");
+INSERT INTO QUESTIONARY (QUESTION,PROCESS, INTEGRITY, AVAILABILITY, CONFIDENTIALITY, SOURCE) values ("¿Se han establecido relaciones entre las tablas?", 5, 1, 2, 2, "Proyecto Final");
+INSERT INTO QUESTIONARY (QUESTION,PROCESS, INTEGRITY, AVAILABILITY, CONFIDENTIALITY, SOURCE) values ("¿Se siguen estándares de nomenclatura de objetos de base de datos?", 5, 1, 1, 0, "Proyecto Final");
+INSERT INTO QUESTIONARY (QUESTION,PROCESS, INTEGRITY, AVAILABILITY, CONFIDENTIALITY, SOURCE) values ("¿Se utilizan vistas materializadas para mejorar el rendimiento de consultas complejas?", 5, 1, 1, 0, "Proyecto Final");
+INSERT INTO QUESTIONARY (QUESTION,PROCESS, INTEGRITY, AVAILABILITY, CONFIDENTIALITY, SOURCE) values ("¿Se documentan las tablas con descripciones detalladas de columnas y relaciones?", 5, 1, 2, 2, "Proyecto Final");
+INSERT INTO QUESTIONARY (QUESTION,PROCESS, INTEGRITY, AVAILABILITY, CONFIDENTIALITY, SOURCE) values ("¿Se implementa el particionamiento de tablas para mejorar la administración de datos históricos?", 5, 1, 1, 0, "Proyecto Final");
+
+INSERT INTO QUESTIONARY (QUESTION,PROCESS, INTEGRITY, AVAILABILITY, CONFIDENTIALITY, SOURCE) values ("¿La base de datos Oracle (u otro SGBD) está correctamente instalada?", 6, 1, 1, 0, "Proyecto Final");
+INSERT INTO QUESTIONARY (QUESTION,PROCESS, INTEGRITY, AVAILABILITY, CONFIDENTIALITY, SOURCE) values ("¿Se han configurado parámetros de rendimiento específicos para la base de datos?", 6, 1, 2, 2, "Proyecto Final");
+INSERT INTO QUESTIONARY (QUESTION,PROCESS, INTEGRITY, AVAILABILITY, CONFIDENTIALITY, SOURCE) values ("¿Se han implementado medidas de seguridad durante la instalación?", 6, 1, 2, 2, "Proyecto Final");
+INSERT INTO QUESTIONARY (QUESTION,PROCESS, INTEGRITY, AVAILABILITY, CONFIDENTIALITY, SOURCE) values ("¿Se realiza una revisión de configuración de seguridad después de la instalación?", 6, 1, 2, 2, "Proyecto Final");
+INSERT INTO QUESTIONARY (QUESTION,PROCESS, INTEGRITY, AVAILABILITY, CONFIDENTIALITY, SOURCE) values ("¿Se siguen las mejores prácticas para configurar el área de intercambio (swap) del sistema operativo?", 6, 1, 2, 2, "Proyecto Final");
+INSERT INTO QUESTIONARY (QUESTION,PROCESS, INTEGRITY, AVAILABILITY, CONFIDENTIALITY, SOURCE) values ("¿Se utilizan herramientas de monitoreo de recursos del servidor (CPU, memoria, disco) para ajustar la configuración?", 6, 1, 2, 2, "Proyecto Final");
+INSERT INTO QUESTIONARY (QUESTION,PROCESS, INTEGRITY, AVAILABILITY, CONFIDENTIALITY, SOURCE) values ("¿Se realiza una prueba de rendimiento después de la instalación para verificar la configuración óptima?", 6, 1, 1, 1, "Proyecto Final");
+INSERT INTO QUESTIONARY (QUESTION,PROCESS, INTEGRITY, AVAILABILITY, CONFIDENTIALITY, SOURCE) values ("¿Se documenta y se mantiene actualizada la configuración de red utilizada por la base de datos?", 6, 1, 1, 0, "Proyecto Final");
+
+INSERT INTO QUESTIONARY (QUESTION,PROCESS, INTEGRITY, AVAILABILITY, CONFIDENTIALITY, SOURCE) values ("¿Se realizan copias de seguridad regulares de la base de datos? ¿Qué tipos de copias importantes se realizan (full back o parcial)?", 7, 3, 0, 1, "Proyecto Final");
+INSERT INTO QUESTIONARY (QUESTION,PROCESS, INTEGRITY, AVAILABILITY, CONFIDENTIALITY, SOURCE) values ("¿Se realiza un seguimiento de la fragmentación de tablas y se toman medidas para optimizar el almacenamiento?", 7, 1, 1, 2, "Proyecto Final");
+INSERT INTO QUESTIONARY (QUESTION,PROCESS, INTEGRITY, AVAILABILITY, CONFIDENTIALITY, SOURCE) values ("¿Se implementa compresión de datos para reducir el consumo de espacio en disco?", 7, 1, 1, 0, "Proyecto Final");
+INSERT INTO QUESTIONARY (QUESTION,PROCESS, INTEGRITY, AVAILABILITY, CONFIDENTIALITY, SOURCE) values ("¿Se gestionan eficazmente los índices para evitar la sobrecarga en la base de datos?", 7, 1, 1, 0, "Proyecto Final");
+INSERT INTO QUESTIONARY (QUESTION,PROCESS, INTEGRITY, AVAILABILITY, CONFIDENTIALITY, SOURCE) values ("¿Se actualizan o eliminan registros obsoletos de manera periódica?", 7, 1, 1, 0, "Proyecto Final");
+INSERT INTO QUESTIONARY (QUESTION,PROCESS, INTEGRITY, AVAILABILITY, CONFIDENTIALITY, SOURCE) values ("¿Existe un proceso de carga de datos externos a la base de datos?", 7, 1, 1, 0, "Proyecto Final");
+INSERT INTO QUESTIONARY (QUESTION,PROCESS, INTEGRITY, AVAILABILITY, CONFIDENTIALITY, SOURCE) values ("¿Se implementa un sistema de registro y administración de Archive Logs para garantizar la integridad y la recuperación de datos?", 7, 2, 1, 2, "Proyecto Final");
+INSERT INTO QUESTIONARY (QUESTION,PROCESS, INTEGRITY, AVAILABILITY, CONFIDENTIALITY, SOURCE) values ("¿Se utiliza una herramienta competente como RMAN (Recovery Manager) para realizar copias de seguridad y restauración de la base de datos de manera eficiente?", 7, 1, 2, 1, "Proyecto Final");
+
+INSERT INTO QUESTIONARY (QUESTION,PROCESS, INTEGRITY, AVAILABILITY, CONFIDENTIALITY, SOURCE) values ("", 8, , , , "Proyecto Final");
+INSERT INTO QUESTIONARY (QUESTION,PROCESS, INTEGRITY, AVAILABILITY, CONFIDENTIALITY, SOURCE) values ("", 8, , , , "Proyecto Final");
+INSERT INTO QUESTIONARY (QUESTION,PROCESS, INTEGRITY, AVAILABILITY, CONFIDENTIALITY, SOURCE) values ("", 8, , , , "Proyecto Final");
+INSERT INTO QUESTIONARY (QUESTION,PROCESS, INTEGRITY, AVAILABILITY, CONFIDENTIALITY, SOURCE) values ("", 8, , , , "Proyecto Final");
+INSERT INTO QUESTIONARY (QUESTION,PROCESS, INTEGRITY, AVAILABILITY, CONFIDENTIALITY, SOURCE) values ("", 8, , , , "Proyecto Final");
+INSERT INTO QUESTIONARY (QUESTION,PROCESS, INTEGRITY, AVAILABILITY, CONFIDENTIALITY, SOURCE) values ("", 8, , , , "Proyecto Final");
+INSERT INTO QUESTIONARY (QUESTION,PROCESS, INTEGRITY, AVAILABILITY, CONFIDENTIALITY, SOURCE) values ("", 8, , , , "Proyecto Final");
+INSERT INTO QUESTIONARY (QUESTION,PROCESS, INTEGRITY, AVAILABILITY, CONFIDENTIALITY, SOURCE) values ("", 8, , , , "Proyecto Final");
+
+INSERT INTO QUESTIONARY (QUESTION,PROCESS, INTEGRITY, AVAILABILITY, CONFIDENTIALITY, SOURCE) values ("", 9, , , , "Proyecto Final");
+INSERT INTO QUESTIONARY (QUESTION,PROCESS, INTEGRITY, AVAILABILITY, CONFIDENTIALITY, SOURCE) values ("", 9, , , , "Proyecto Final");
+INSERT INTO QUESTIONARY (QUESTION,PROCESS, INTEGRITY, AVAILABILITY, CONFIDENTIALITY, SOURCE) values ("", 9, , , , "Proyecto Final");
+INSERT INTO QUESTIONARY (QUESTION,PROCESS, INTEGRITY, AVAILABILITY, CONFIDENTIALITY, SOURCE) values ("", 9, , , , "Proyecto Final");
+INSERT INTO QUESTIONARY (QUESTION,PROCESS, INTEGRITY, AVAILABILITY, CONFIDENTIALITY, SOURCE) values ("", 9, , , , "Proyecto Final");
+INSERT INTO QUESTIONARY (QUESTION,PROCESS, INTEGRITY, AVAILABILITY, CONFIDENTIALITY, SOURCE) values ("", 9, , , , "Proyecto Final");
+INSERT INTO QUESTIONARY (QUESTION,PROCESS, INTEGRITY, AVAILABILITY, CONFIDENTIALITY, SOURCE) values ("", 9, , , , "Proyecto Final");
+INSERT INTO QUESTIONARY (QUESTION,PROCESS, INTEGRITY, AVAILABILITY, CONFIDENTIALITY, SOURCE) values ("", 9, , , , "Proyecto Final");
+
+INSERT INTO QUESTIONARY (QUESTION,PROCESS, INTEGRITY, AVAILABILITY, CONFIDENTIALITY, SOURCE) values ("", 10, , , , "Proyecto Final");
+INSERT INTO QUESTIONARY (QUESTION,PROCESS, INTEGRITY, AVAILABILITY, CONFIDENTIALITY, SOURCE) values ("", 10, , , , "Proyecto Final");
+INSERT INTO QUESTIONARY (QUESTION,PROCESS, INTEGRITY, AVAILABILITY, CONFIDENTIALITY, SOURCE) values ("", 10, , , , "Proyecto Final");
+INSERT INTO QUESTIONARY (QUESTION,PROCESS, INTEGRITY, AVAILABILITY, CONFIDENTIALITY, SOURCE) values ("", 10, , , , "Proyecto Final");
+INSERT INTO QUESTIONARY (QUESTION,PROCESS, INTEGRITY, AVAILABILITY, CONFIDENTIALITY, SOURCE) values ("", 10, , , , "Proyecto Final");
+INSERT INTO QUESTIONARY (QUESTION,PROCESS, INTEGRITY, AVAILABILITY, CONFIDENTIALITY, SOURCE) values ("", 10, , , , "Proyecto Final");
+INSERT INTO QUESTIONARY (QUESTION,PROCESS, INTEGRITY, AVAILABILITY, CONFIDENTIALITY, SOURCE) values ("", 10, , , , "Proyecto Final");
+INSERT INTO QUESTIONARY (QUESTION,PROCESS, INTEGRITY, AVAILABILITY, CONFIDENTIALITY, SOURCE) values ("", 10, , , , "Proyecto Final");
+
+INSERT INTO QUESTIONARY (QUESTION,PROCESS, INTEGRITY, AVAILABILITY, CONFIDENTIALITY, SOURCE) values ("", 11, , , , "Proyecto Final");
+INSERT INTO QUESTIONARY (QUESTION,PROCESS, INTEGRITY, AVAILABILITY, CONFIDENTIALITY, SOURCE) values ("", 11, , , , "Proyecto Final");
+INSERT INTO QUESTIONARY (QUESTION,PROCESS, INTEGRITY, AVAILABILITY, CONFIDENTIALITY, SOURCE) values ("", 11, , , , "Proyecto Final");
+INSERT INTO QUESTIONARY (QUESTION,PROCESS, INTEGRITY, AVAILABILITY, CONFIDENTIALITY, SOURCE) values ("", 11, , , , "Proyecto Final");
+INSERT INTO QUESTIONARY (QUESTION,PROCESS, INTEGRITY, AVAILABILITY, CONFIDENTIALITY, SOURCE) values ("", 11, , , , "Proyecto Final");
+
+INSERT INTO QUESTIONARY (QUESTION,PROCESS, INTEGRITY, AVAILABILITY, CONFIDENTIALITY, SOURCE) values ("", 12, , , , "Proyecto Final");
+INSERT INTO QUESTIONARY (QUESTION,PROCESS, INTEGRITY, AVAILABILITY, CONFIDENTIALITY, SOURCE) values ("", 12, , , , "Proyecto Final");
+INSERT INTO QUESTIONARY (QUESTION,PROCESS, INTEGRITY, AVAILABILITY, CONFIDENTIALITY, SOURCE) values ("", 12, , , , "Proyecto Final");
+INSERT INTO QUESTIONARY (QUESTION,PROCESS, INTEGRITY, AVAILABILITY, CONFIDENTIALITY, SOURCE) values ("", 12, , , , "Proyecto Final");
+INSERT INTO QUESTIONARY (QUESTION,PROCESS, INTEGRITY, AVAILABILITY, CONFIDENTIALITY, SOURCE) values ("", 12, , , , "Proyecto Final");
+
+INSERT INTO QUESTIONARY (QUESTION,PROCESS, INTEGRITY, AVAILABILITY, CONFIDENTIALITY, SOURCE) values ("", 13, , , , "Proyecto Final");
+INSERT INTO QUESTIONARY (QUESTION,PROCESS, INTEGRITY, AVAILABILITY, CONFIDENTIALITY, SOURCE) values ("", 13, , , , "Proyecto Final");
+INSERT INTO QUESTIONARY (QUESTION,PROCESS, INTEGRITY, AVAILABILITY, CONFIDENTIALITY, SOURCE) values ("", 13, , , , "Proyecto Final");
+INSERT INTO QUESTIONARY (QUESTION,PROCESS, INTEGRITY, AVAILABILITY, CONFIDENTIALITY, SOURCE) values ("", 13, , , , "Proyecto Final");
+INSERT INTO QUESTIONARY (QUESTION,PROCESS, INTEGRITY, AVAILABILITY, CONFIDENTIALITY, SOURCE) values ("", 13, , , , "Proyecto Final");
+
+INSERT INTO QUESTIONARY (QUESTION,PROCESS, INTEGRITY, AVAILABILITY, CONFIDENTIALITY, SOURCE) values ("", 14, , , , "Proyecto Final");
+INSERT INTO QUESTIONARY (QUESTION,PROCESS, INTEGRITY, AVAILABILITY, CONFIDENTIALITY, SOURCE) values ("", 14, , , , "Proyecto Final");
+INSERT INTO QUESTIONARY (QUESTION,PROCESS, INTEGRITY, AVAILABILITY, CONFIDENTIALITY, SOURCE) values ("", 14, , , , "Proyecto Final");
+INSERT INTO QUESTIONARY (QUESTION,PROCESS, INTEGRITY, AVAILABILITY, CONFIDENTIALITY, SOURCE) values ("", 14, , , , "Proyecto Final");
+INSERT INTO QUESTIONARY (QUESTION,PROCESS, INTEGRITY, AVAILABILITY, CONFIDENTIALITY, SOURCE) values ("", 14, , , , "Proyecto Final");
+
+INSERT INTO QUESTIONARY (QUESTION,PROCESS, INTEGRITY, AVAILABILITY, CONFIDENTIALITY, SOURCE) values ("", 15, , , , "Proyecto Final");
+INSERT INTO QUESTIONARY (QUESTION,PROCESS, INTEGRITY, AVAILABILITY, CONFIDENTIALITY, SOURCE) values ("", 15, , , , "Proyecto Final");
+INSERT INTO QUESTIONARY (QUESTION,PROCESS, INTEGRITY, AVAILABILITY, CONFIDENTIALITY, SOURCE) values ("", 15, , , , "Proyecto Final");
+INSERT INTO QUESTIONARY (QUESTION,PROCESS, INTEGRITY, AVAILABILITY, CONFIDENTIALITY, SOURCE) values ("", 15, , , , "Proyecto Final");
+INSERT INTO QUESTIONARY (QUESTION,PROCESS, INTEGRITY, AVAILABILITY, CONFIDENTIALITY, SOURCE) values ("", 15, , , , "Proyecto Final");
+
+INSERT INTO QUESTIONARY (QUESTION,PROCESS, INTEGRITY, AVAILABILITY, CONFIDENTIALITY, SOURCE) values ("", 16, , , , "Proyecto Final");
+INSERT INTO QUESTIONARY (QUESTION,PROCESS, INTEGRITY, AVAILABILITY, CONFIDENTIALITY, SOURCE) values ("", 16, , , , "Proyecto Final");
+INSERT INTO QUESTIONARY (QUESTION,PROCESS, INTEGRITY, AVAILABILITY, CONFIDENTIALITY, SOURCE) values ("", 16, , , , "Proyecto Final");
+INSERT INTO QUESTIONARY (QUESTION,PROCESS, INTEGRITY, AVAILABILITY, CONFIDENTIALITY, SOURCE) values ("", 16, , , , "Proyecto Final");
+INSERT INTO QUESTIONARY (QUESTION,PROCESS, INTEGRITY, AVAILABILITY, CONFIDENTIALITY, SOURCE) values ("", 16, , , , "Proyecto Final");
+
+
+
+
+
+
