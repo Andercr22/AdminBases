@@ -135,17 +135,17 @@ function Reassign() {
                 <!--<canvas id="myCanvas" style="background: white; text-align: center;"></canvas>
             <legend for="myCanvas"></legend>
             -->
-                <div class="content-container2 right-container">
+                <div class="container">
 					<label for="integrity">INTEGRIDAD</label>
                     <img class= "defaultImage" id="defaultImage3" name = "integrity" src="FeRojo.jpg" alt="Imagen por defecto">
 					
                 </div>
-				<div class="content-container2 right-container">
+				<div class="container">
                     <label for="availability">DISPONIBILIDAD</label>
                     <img class= "defaultImage" id="defaultImage2" name = "availability" src="FeRojo.jpg" alt="Imagen por defecto">
 
                 </div>
-                <div class="content-container2 right-container">
+                <div class="container">
                     <label for="confidenciality">CONFIDENCIALIDAD</label>
                     <img class= "defaultImage" id="defaultImage1" name = "confidenciality" src="FeRojo.jpg" alt="Imagen por defecto">
 	
