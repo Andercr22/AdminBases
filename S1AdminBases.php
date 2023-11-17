@@ -14,13 +14,27 @@ if ($conn->connect_error) {
 }
 
 // Consulta para obtener nombres de procesos y preguntas
-$sql = "SELECT p.NAME AS process_name, p.DETAILS AS process_details, q.QUESTION AS question, q.INTEGRITY as integrity, q.AVAILABILITY as available, q.CONFIDENTIALITY as confidentiality, q.SOURCE as source
+$sql = "SELECT p.ID AS process_id, p.NAME AS process_name, p.DETAILS AS process_details, q.QUESTION AS question, q.INTEGRITY as integrity, q.AVAILABILITY as available, q.CONFIDENTIALITY as confidentiality, q.SOURCE as source
           FROM PROCESS p, questionary q
           WHERE p.ID = q.PROCESS";
 
 $result = $conn->query($sql);
-if ($result->num_rows > 0) {
 
+// Verificar si la consulta devuelve resultados
+if ($result->num_rows > 0) {
+    // Inicializar un array para almacenar las preguntas por proceso
+    $preguntas_por_proceso = array();
+
+    // Recorrer los resultados y agrupar por proceso
+    while ($row = $result->fetch_assoc()) {
+        $process_id = $row["process_id"];
+
+        if (!isset($preguntas_por_proceso[$process_id])) {
+            $preguntas_por_proceso[$process_id] = array();
+        }
+
+        $preguntas_por_proceso[$process_id][] = $row;
+    }
 } else {
     echo "No se encontraron resultados.";
 }
@@ -81,9 +95,11 @@ if ($result->num_rows > 0) {
                             <?php
                             // Genera los botones y las tablas adicionales
                             for ($i = 1; $i <= 12; $i++) {
-                                echo "<button class='btn btn-outline-primary' onclick='mostrarTabla($i)'>Tabla $i</button>";
-                            }
+                                $detalle_proceso = isset($preguntas_por_proceso[$i][0]["process_details"]) ? $preguntas_por_proceso[$i][0]["process_details"] : "Detalle Proceso $i";
+
+                                echo "<button class='btn btn-outline-primary m-2 p-3' style='border-radius: 15px;' onclick='mostrarTabla($i)'>$detalle_proceso</button>";
                             
+                            }
                             ?>
                         </div>
 
@@ -94,40 +110,41 @@ if ($result->num_rows > 0) {
                             for ($i = 1; $i <= 12; $i++) {
                                 echo "<table class='tabla-oculta' style='color: darkred; display: none;'>";
                                 echo "<tr>
-                        <th>Procesos</th>
-                        <th>Detalle</th>
-                        <th>Fuente</th>
-                        <th>Pregunta</th>
-                        <th>I</th>
-                        <th>D</th>
-                        <th>C</th>
-                        <th>Sí</th>
-                        <th>No</th>
-                        <th>N/A</th>
-                      </tr>";
+                                        <th>Procesos</th>
+                                        <th>Detalle</th>
+                                        <th>Fuente</th>
+                                        <th>Pregunta</th>
+                                        <th>I</th>
+                                        <th>D</th>
+                                        <th>C</th>
+                                        <th>Sí</th>
+                                        <th>No</th>
+                                        <th>N/A</th>
+                                      </tr>";
+
+                                // Obtén las preguntas del proceso actual
+                                $preguntas_del_proceso = isset($preguntas_por_proceso[$i]) ? $preguntas_por_proceso[$i] : array();
 
                                 // Bucle para las filas dentro de cada tabla
-                                while ($row = $result->fetch_assoc()) {
+                                foreach ($preguntas_del_proceso as $row) {
                                     $contador++;
                                     $id = "radius" . $contador;
 
                                     echo "<tr>
-                            <td>{$row["process_name"]}</td>
-                            <td>{$row["process_details"]}</td>
-                            <td>{$row["source"]}</td>
-                            <td>{$row["question"]}</td>
-                            <td><option value='integrity'>{$row["integrity"]}</option></td>
-                            <td><option value='available'>{$row["available"]}</option></td>
-                            <td><option value='confidentiality'>{$row["confidentiality"]}</option></td>
-                            <td><input value='si' name='{$id}' type='Radio'></td>
-                            <td><input value='no' name='{$id}' type='Radio'></td>
-                            <td><input value='na' name='{$id}' type='Radio'></td>
-                          </tr>";
+                                            <td>{$row["process_name"]}</td>
+                                            <td>{$row["process_details"]}</td>
+                                            <td>{$row["source"]}</td>
+                                            <td>{$row["question"]}</td>
+                                            <td><option value='integrity'>{$row["integrity"]}</option></td>
+                                            <td><option value='available'>{$row["available"]}</option></td>
+                                            <td><option value='confidentiality'>{$row["confidentiality"]}</option></td>
+                                            <td><input value='si' name='{$id}' type='Radio'></td>
+                                            <td><input value='no' name='{$id}' type='Radio'></td>
+                                            <td><input value='na' name='{$id}' type='Radio' checked></td>
+                                          </tr>";
                                 }
 
                                 echo "</table>"; // Cierra la tabla actual
-                                // Vuelve a la posición inicial de los resultados para el siguiente bucle
-                                $result->data_seek(0);
                             }
                         }
                         // Cerrar la conexión
@@ -139,51 +156,37 @@ if ($result->num_rows > 0) {
                         <button class="btn btn-outline-danger mx-2" id="limpiarBtn" type="submit">Limpiar</button>
                     </div>
                 </div>
-
             </div>
         </div>
 
         <div class="col-md-4">
             <div class="right-container">
                 <img class="defaultImage" id="defaultImage" src="FeRojo.jpg" alt="Imagen por defecto">
-
             </div>
             <div class=right-container>
-                <!--<canvas id="myCanvas" style="background: white; text-align: center;"></canvas>
-            <legend for="myCanvas"></legend>
-            -->
                 <div class="container">
                     <label for="integrity">INTEGRIDAD</label>
                     <img class="defaultImage" id="defaultImage3" name="integrity" src="FeRojo.jpg"
                         alt="Imagen por defecto">
-
                 </div>
                 <div class="container">
                     <label for="availability">DISPONIBILIDAD</label>
                     <img class="defaultImage" id="defaultImage2" name="availability" src="FeRojo.jpg"
                         alt="Imagen por defecto">
-
                 </div>
                 <div class="container">
                     <label for="confidenciality">CONFIDENCIALIDAD</label>
                     <img class="defaultImage" id="defaultImage1" name="confidenciality" src="FeRojo.jpg"
                         alt="Imagen por defecto">
-
                 </div>
             </div>
         </div>
-
     </div>
-
 </body>
 <footer>
-
 </footer>
-
 </body>
-<script src="S1AdminBases.js">
-</script>
-
+<script src="S1AdminBases.js"></script>
 <script>
     function mostrarTabla(numero) {
         // Ocultar todas las tablas
@@ -199,5 +202,4 @@ if ($result->num_rows > 0) {
         }
     }
 </script>
-
 </html>
