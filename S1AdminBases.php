@@ -189,12 +189,16 @@ if ($result->num_rows > 0) {
 <script src="S1AdminBases.js"></script>
 <script>
     function mostrarTabla(numero) {
+        
         // Ocultar todas las tablas
         var tablas = document.getElementsByClassName('tabla-oculta');
         for (var i = 0; i < tablas.length; i++) {
             tablas[i].style.display = 'none';
         }
-
+        var radios = document.querySelectorAll('input[type="radio"]');
+        for (var i = 0; i < radios.length; i++) {
+            radios[i].checked = radios[i].value === 'na';
+        }
         // Mostrar la tabla seleccionada
         var tablaSeleccionada = document.getElementsByClassName('tabla-oculta')[numero - 1];
         if (tablaSeleccionada) {
